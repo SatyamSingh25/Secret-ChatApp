@@ -1,5 +1,4 @@
 FROM openjdk:17.0.1-jdk-slim
-VOLUME /tmp
-COPY target/*.jar chatApp.jar
-ENTRYPOINT ["java","-jar","/chatApp.jar"]
+COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","demo.jar"]
